@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReactionsApp.StartingLightsGamePage"
+             Title="StartingLightsGamePage">
+    <VerticalStackLayout Spacing="5">
+        <Label 
+            Text="Tap the round button to start"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button
+            x:Name="ChangeLaunchModeButton"
+            Text="" 
+            SemanticProperties.Hint="Click to change launch mode"
+            Clicked="OnChangeLaunchModeButtonClicked" 
+            WidthRequest="200"/>
+        <HorizontalStackLayout x:Name="Lightsboard" HorizontalOptions="CenterAndExpand" Spacing="5" BackgroundColor="Black">
+            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="50, 50, 50, 50" />
+                </Border.StrokeShape>
+                <Ellipse WidthRequest="50" HeightRequest="50"/>
+            </Border>
+            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="50, 50, 50, 50" />
+                </Border.StrokeShape>
+                <Ellipse WidthRequest="50" HeightRequest="50"/>
+            </Border>
+            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="50, 50, 50, 50" />
+                </Border.StrokeShape>
+                <Ellipse WidthRequest="50" HeightRequest="50"/>
+            </Border>
+            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="50, 50, 50, 50" />
+                </Border.StrokeShape>
+                <Ellipse WidthRequest="50" HeightRequest="50"/>
+            </Border>
+            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="50, 50, 50, 50" />
+                </Border.StrokeShape>
+                <Ellipse WidthRequest="50" HeightRequest="50"/>
+            </Border>
+        </HorizontalStackLayout>
+        <Button
+            x:Name="LaunchButton"
+            Text="" 
+            SemanticProperties.Hint="Click to launch"
+            Pressed="OnLaunchButtonPressed"
+            Released="OnLaunchButtonReleased"
+            WidthRequest="50"
+            HeightRequest="50"
+            CornerRadius="50"/>
+    </VerticalStackLayout>
+</ContentPage>
