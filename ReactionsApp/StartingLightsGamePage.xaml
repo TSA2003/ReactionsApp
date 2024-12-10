@@ -3,43 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ReactionsApp.StartingLightsGamePage"
              Title="StartingLightsGamePage">
-    <VerticalStackLayout Spacing="5">
+    <VerticalStackLayout Spacing="5" VerticalOptions="Start">
+
         <Label 
-            Text="Tap the round button to start"
+            Text="Click to change launch mode"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            FontSize="Small" />
         <Button
             x:Name="ChangeLaunchModeButton"
             Text="" 
             SemanticProperties.Hint="Click to change launch mode"
             Clicked="OnChangeLaunchModeButtonClicked" 
-            WidthRequest="200"/>
-        <HorizontalStackLayout x:Name="Lightsboard" HorizontalOptions="CenterAndExpand" Spacing="5" BackgroundColor="Black">
-            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+            WidthRequest="200"
+            Margin="0,0,0,50"/>
+        <Label 
+            x:Name="GameStatusLabel"
+            Text="Tap the round button to start"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Medium" />
+        
+        <HorizontalStackLayout x:Name="Lightsboard" HorizontalOptions="CenterAndExpand" Spacing="5" BackgroundColor="Black" Padding="5">
+            <Border StrokeThickness="5" BackgroundColor="Black" Stroke="#282828">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50, 50, 50, 50" />
                 </Border.StrokeShape>
                 <Ellipse WidthRequest="50" HeightRequest="50"/>
             </Border>
-            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+            <Border BackgroundColor="Black" Stroke="#282828" StrokeThickness="5">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50, 50, 50, 50" />
                 </Border.StrokeShape>
                 <Ellipse WidthRequest="50" HeightRequest="50"/>
             </Border>
-            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+            <Border BackgroundColor="Black" Stroke="#282828" StrokeThickness="5">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50, 50, 50, 50" />
                 </Border.StrokeShape>
                 <Ellipse WidthRequest="50" HeightRequest="50"/>
             </Border>
-            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+            <Border BackgroundColor="Black" Stroke="#282828" StrokeThickness="5">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50, 50, 50, 50" />
                 </Border.StrokeShape>
                 <Ellipse WidthRequest="50" HeightRequest="50"/>
             </Border>
-            <Border BackgroundColor="Red" Stroke="Black" StrokeThickness="5">
+            <Border BackgroundColor="Black" Stroke="#282828" StrokeThickness="5">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50, 50, 50, 50" />
                 </Border.StrokeShape>
@@ -54,6 +64,7 @@
             Released="OnLaunchButtonReleased"
             WidthRequest="50"
             HeightRequest="50"
-            CornerRadius="50"/>
+            CornerRadius="50"
+            Margin="0, 20" />
     </VerticalStackLayout>
 </ContentPage>
