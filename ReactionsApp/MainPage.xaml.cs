@@ -13,6 +13,11 @@
         {
             Navigation.PushAsync(new StartingLightsGamePage());
         }
+
+        private void OnRandomPointsGameButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RandomPointsGamePage());
+        }
     }
 
 }

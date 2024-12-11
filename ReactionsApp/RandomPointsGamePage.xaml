@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:drawable="clr-namespace:ReactionsApp"
+             x:Class="ReactionsApp.RandomPointsGamePage"
+             Title="RandomPointsGamePage">
+    <ContentPage.Resources>
+        <drawable:RandomPointsDrawable x:Key="drawable" />
+    </ContentPage.Resources>
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <GraphicsView
+            x:Name="GameField" 
+            BackgroundColor="Blue"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Drawable="{StaticResource drawable}">
+            <GraphicsView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnGameFieldTap"/>
+            </GraphicsView.GestureRecognizers>
+        </GraphicsView>
+    </StackLayout>
+</ContentPage>

@@ -30,6 +30,13 @@
                 SemanticProperties.Hint="Click to start the lights game"
                 Clicked="OnStartingLightsGameButtonClicked"
                 HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="RandomPointsGameButton"
+                Text="Random Points Game" 
+                SemanticProperties.Hint="Click to start the random points game"
+                Clicked="OnRandomPointsGameButtonClicked"
+                HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
 

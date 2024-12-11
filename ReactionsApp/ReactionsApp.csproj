@@ -65,6 +65,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="RandomPointsGamePage.xaml.cs">
+	    <DependentUpon>RandomPointsGamePage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="StartingLightsGamePage.xaml">
 	    <Generator></Generator>
 	  </MauiXaml>
