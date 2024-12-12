@@ -10,33 +10,48 @@ namespace ReactionsApp
     public class RandomPointsDrawable : IDrawable
     {
         private readonly Color FILL_COLOR = Color.FromRgb(0, 0, 255);
-        private const float RADIUS = 20;
+        private readonly Color CLICKED_FILL_COLOR = Color.FromRgb(0, 255, 0);
+        private const double RADIUS = 20;
+
+        private Point currentCircleCenter;
+        private bool isCurrentCircleSelected;
+
 
         public RandomPointsDrawable()
         {
-            
+
         }
-
-        public float CanvasWidth { get; set; }
-        public float CanvasHeight { get; set; }
-
-        public PointF CurrentCircleCenter { get; set; }
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            float pointX = (float)Random.Shared.NextDouble() * (dirtyRect.Width - RADIUS);
-            float pointY = (float)Random.Shared.NextDouble() * (dirtyRect.Height - RADIUS);
-            var center = new PointF(pointX, pointY);
-            CurrentCircleCenter = center;
-            canvas.FillColor = FILL_COLOR;
-            canvas.FillCircle(pointX, pointY, RADIUS);
+            if (isCurrentCircleSelected)
+            {
+                canvas.FillColor = CLICKED_FILL_COLOR;
+                canvas.FillCircle(currentCircleCenter, RADIUS);
+                isCurrentCircleSelected = false;
+            }
+            else
+            {
+                double pointX = Random.Shared.NextDouble() * (dirtyRect.Width - RADIUS);
+                double pointY = Random.Shared.NextDouble() * (dirtyRect.Height - RADIUS);
+                var center = new Point(pointX, pointY);
+                currentCircleCenter = center;
+                canvas.FillColor = FILL_COLOR;
+                canvas.FillCircle(center, RADIUS);                
+            }            
         }
 
-        public bool IsPointInsideCircle(PointF point)
+        public bool TrySelectCircle(Point point)
         {
-            float distance = (float)Math.Sqrt(Math.Pow(point.X - CurrentCircleCenter.X, 2) + Math.Pow(point.Y - CurrentCircleCenter.Y, 2));
-        
-            return distance <= RADIUS;
+            double distance = Math.Sqrt(Math.Pow(point.X - currentCircleCenter.X, 2) + Math.Pow(point.Y - currentCircleCenter.Y, 2));
+
+            if (distance <= RADIUS)
+            { 
+                isCurrentCircleSelected = true;
+                return true;
+            }
+
+            return false;
         }
     }
 }
