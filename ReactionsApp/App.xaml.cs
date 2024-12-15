@@ -2,14 +2,18 @@
 {
     public partial class App : Application
     {
+        public static Window Window { get; set; }
+
         public App()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            Window = new Window();
+            Window.Page = new AppShell();
+            return Window;
         }
     }
 }

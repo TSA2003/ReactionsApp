@@ -4,23 +4,32 @@
              xmlns:drawable="clr-namespace:ReactionsApp"
              x:Class="ReactionsApp.RandomPointsGamePage"
              Title="RandomPointsGamePage">
-    <ContentPage.Resources>
-        <drawable:RandomPointsDrawable x:Key="drawable" />
-    </ContentPage.Resources>
-    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <GraphicsView
-            x:Name="GameField" 
-            BackgroundColor="Blue"
-            VerticalOptions="FillAndExpand"
-            HorizontalOptions="FillAndExpand"
-            Drawable="{StaticResource drawable}">
-            <GraphicsView.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnGameFieldTap"/>
-            </GraphicsView.GestureRecognizers>
-        </GraphicsView>
-    </StackLayout>
+
+    <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="GameField">
+        <Label
+            x:Name="ScoreLabel"
+            Text="Score:"
+            Style="{StaticResource Headline}"
+            SemanticProperties.HeadingLevel="Level1" 
+            AbsoluteLayout.LayoutBounds="0.1, 0, AutoSize, AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            />
+        <Button
+            x:Name="ResetGameButton"
+            Text="Reset" 
+            SemanticProperties.Hint="Click to start the lights game"
+            Clicked="OnResetGameButtonClicked"
+            AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional" />
+        <Label
+            x:Name="RemainingSecondsLabel"
+            Text=""
+            Style="{StaticResource Headline}"
+            SemanticProperties.HeadingLevel="Level1"
+            AbsoluteLayout.LayoutBounds="0.9, 0, AutoSize, AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            />
+        
+    </AbsoluteLayout>
+
 </ContentPage>

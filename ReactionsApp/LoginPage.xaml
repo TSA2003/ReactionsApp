@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReactionsApp.LoginPage"
+             Title="LoginPage">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout Padding="50" MaximumWidthRequest="500">
+        <!-- Title -->
+        <Label Text="Login"
+               FontSize="32"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+
+        <!-- Username Entry -->
+        <Entry x:Name="usernameEntry"
+               Placeholder="Username"
+               Keyboard="Email"
+               Margin="0,10,0,10" />
+
+        <!-- Password Entry -->
+        <Entry x:Name="passwordEntry"
+               Placeholder="Password"
+               IsPassword="True"
+               Margin="0,10,0,20" />
+
+        <!-- Error message for invalid login -->
+        <Label x:Name="errorLabel"
+               TextColor="Red"
+               IsVisible="False"
+               HorizontalOptions="Center" />
+
+        <!-- Login Button -->
+        <Button Text="Login"
+                Clicked="OnLoginClicked"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End" />
+
+        <!-- Register Link (Optional) -->
+        <Label Text="Don't have an account? Register"
+               TextColor="#007BFF"
+               HorizontalOptions="Center"
+               VerticalOptions="End">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnRegisterTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

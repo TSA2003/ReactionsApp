@@ -14,7 +14,7 @@ namespace ReactionsApp
         private const double RADIUS = 20;
 
         private Point currentCircleCenter;
-        private bool isCurrentCircleSelected;
+        public bool isCurrentCircleSelected;
 
 
         public RandomPointsDrawable()
@@ -30,15 +30,13 @@ namespace ReactionsApp
                 canvas.FillCircle(currentCircleCenter, RADIUS);
                 isCurrentCircleSelected = false;
             }
-            else
-            {
-                double pointX = Random.Shared.NextDouble() * (dirtyRect.Width - RADIUS);
-                double pointY = Random.Shared.NextDouble() * (dirtyRect.Height - RADIUS);
-                var center = new Point(pointX, pointY);
-                currentCircleCenter = center;
-                canvas.FillColor = FILL_COLOR;
-                canvas.FillCircle(center, RADIUS);                
-            }            
+
+            double pointX = Random.Shared.NextDouble() * (dirtyRect.Width - RADIUS);
+            double pointY = Random.Shared.NextDouble() * (dirtyRect.Height - RADIUS);
+            var center = new Point(pointX, pointY);
+            currentCircleCenter = center;
+            canvas.FillColor = FILL_COLOR;
+            canvas.FillCircle(center, RADIUS);                       
         }
 
         public bool TrySelectCircle(Point point)
@@ -46,7 +44,7 @@ namespace ReactionsApp
             double distance = Math.Sqrt(Math.Pow(point.X - currentCircleCenter.X, 2) + Math.Pow(point.Y - currentCircleCenter.Y, 2));
 
             if (distance <= RADIUS)
-            { 
+            {
                 isCurrentCircleSelected = true;
                 return true;
             }

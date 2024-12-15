@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReactionsApp.RegisterPage"
+             Title="RegisterPage">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout Padding="50" MaximumWidthRequest="500">
+        <!-- Title -->
+        <Label Text="Register"
+               FontSize="32"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+
+        <!-- Username Entry -->
+        <Entry x:Name="usernameEntry"
+               Placeholder="Username"
+               Keyboard="Text"
+               Margin="0,10,0,10" />
+
+        <!-- Email Entry -->
+        <Entry x:Name="emailEntry"
+               Placeholder="Email"
+               Keyboard="Email"
+               Margin="0,10,0,10" />
+
+        <!-- Password Entry -->
+        <Entry x:Name="passwordEntry"
+               Placeholder="Password"
+               IsPassword="True"
+               Margin="0,10,0,10" />
+
+        <!-- Confirm Password Entry -->
+        <Entry x:Name="confirmPasswordEntry"
+               Placeholder="Confirm Password"
+               IsPassword="True"
+               Margin="0,10,0,20" />
+
+        <!-- Error message for invalid input -->
+        <Label x:Name="errorLabel"
+               TextColor="Red"
+               IsVisible="False"
+               HorizontalOptions="Center" />
+
+        <!-- Register Button -->
+        <Button Text="Register"
+                Clicked="OnRegisterClicked"
+                TextColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End" />
+
+        <!-- Already have an account? Link -->
+        <Label Text="Already have an account? Login"
+               HorizontalOptions="Center"
+               TextColor="#007BFF"
+               VerticalOptions="End">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnLoginTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

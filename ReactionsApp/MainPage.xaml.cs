@@ -7,6 +7,8 @@
         public MainPage()
         {
             InitializeComponent();
+            Navigation.PushAsync(new LoginPage());
+            Shell.Current.FlyoutBehavior = FlyoutBehavior.Disabled;
         }
 
         private void OnStartingLightsGameButtonClicked(object sender, EventArgs e)
