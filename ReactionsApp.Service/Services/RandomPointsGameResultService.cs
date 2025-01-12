@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ReactionsApp.Business.Services
 {
-    public class RandomPointsGameResultService : BaseService<RandomPointsGameResult, RandomPointsGameResultRepository, RandomPointsGameResultDto>
+    public class RandomPointsGameResultService : BaseService<RandomPointsGameResult, RandomPointsGameResultRepository>
     {
         public RandomPointsGameResultService(RandomPointsGameResultRepository repository, IMapper mapper) : base(repository, mapper)
         {

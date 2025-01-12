@@ -1,6 +1,11 @@
-
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using ReactionsApp.Business;
+using ReactionsApp.Business.Services;
+using ReactionsApp.Data;
+using ReactionsApp.Data.Repositories;
 using System.Text;
 
 namespace ReactionsApp.Api
@@ -30,9 +35,23 @@ namespace ReactionsApp.Api
 
                     ValidIssuer = builder.Configuration["Jwt:Issuer"],
                     ValidAudience = builder.Configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))
                 };
             });
+
+            builder.Services.AddDbContext<ReactionsAppDbContext>(options =>
+                options.UseSqlServer("YourConnectionStringHere"));
+
+            builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<UserRepository>();
+            builder.Services.AddScoped<StartingLightsGameResultService>();
+            builder.Services.AddScoped<StartingLightsGameResultRepository>();
+            builder.Services.AddScoped<RandomPointsGameResultService>();
+            builder.Services.AddScoped<RandomPointsGameResultRepository>();
+
+            builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+            
+
 
             var app = builder.Build();
 

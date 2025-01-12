@@ -34,25 +34,36 @@ namespace ReactionsApp.Data.Repositories
             return await _dbSet.ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        public virtual async Task<IEnumerable<T>> FilterAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbSet.Where(predicate).ToListAsync();
         }
 
-        public virtual async Task AddAsync(T entity)
+        public virtual async Task<T> AddAsync(T entity)
         {
             if (entity == null) 
                 throw new ArgumentNullException(nameof(entity));
             
+            entity.CreatedAt = DateTime.Now;
+            entity.UpdatedAt = DateTime.Now;
+
             await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
+
+            return entity;
         }
 
-        public virtual async Task UpdateAsync(T entity)
+        public virtual async Task<T> UpdateAsync(T entity)
         {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
+            if (entity == null) 
+                throw new ArgumentNullException(nameof(entity));
+
+            entity.UpdatedAt = DateTime.Now;
+
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();
+
+            return entity;
         }
 
         public virtual async Task DeleteAsync(T entity)

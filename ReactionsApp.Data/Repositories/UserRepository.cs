@@ -10,7 +10,7 @@ namespace ReactionsApp.Data.Repositories
 {
     public class UserRepository : BaseRepository<User>
     {
-        public UserRepository(DbContext context) : base(context)
+        public UserRepository(ReactionsAppDbContext context) : base(context)
         {
         }
     }

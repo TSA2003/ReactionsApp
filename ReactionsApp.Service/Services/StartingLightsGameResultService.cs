@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ReactionsApp.Business.Services
 {
-    public class StartingLightsGameResultService : BaseService<StartingLightsGameResult, StartingLightsGameResultRepository, StartingLightsGameResultDto>
+    public class StartingLightsGameResultService : BaseService<StartingLightsGameResult, StartingLightsGameResultRepository>
     {
         public StartingLightsGameResultService(StartingLightsGameResultRepository repository, IMapper mapper) : base(repository, mapper)
         {

@@ -11,6 +11,6 @@ namespace ReactionsApp.Business.Dtos
     public class RandomPointsGameResultDto : BaseDto
     {
         public int Score { get; set; }
-        public User Player { get; set; }
+        public Guid PlayerId { get; set; }
     }
 }

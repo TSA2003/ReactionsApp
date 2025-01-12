@@ -10,7 +10,7 @@ namespace ReactionsApp.Data.Repositories
 {
     public class RandomPointsGameResultRepository : BaseRepository<RandomPointsGameResult>
     {
-        public RandomPointsGameResultRepository(DbContext context) : base(context)
+        public RandomPointsGameResultRepository(ReactionsAppDbContext context) : base(context)
         {
         }
     }

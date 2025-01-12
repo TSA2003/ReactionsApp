@@ -10,7 +10,7 @@ namespace ReactionsApp.Data.Repositories
 {
     public class StartingLightsGameResultRepository : BaseRepository<StartingLightsGameResult>
     {
-        public StartingLightsGameResultRepository(DbContext context) : base(context)
+        public StartingLightsGameResultRepository(ReactionsAppDbContext context) : base(context)
         {
         }
     }

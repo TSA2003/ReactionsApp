@@ -13,6 +13,6 @@ namespace ReactionsApp.Business.Dtos
     {
         public TimeSpan ReactionTime { get; set; }
         public StartingLightsGameMode GameMode { get; set; }
-        public User Player { get; set; }
+        public Guid PlayerId { get; set; }
     }
 }

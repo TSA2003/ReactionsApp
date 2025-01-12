@@ -1,0 +1,15 @@
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\bin\Debug\net9.0\ReactionsApp.Data.deps.json
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\bin\Debug\net9.0\ReactionsApp.Data.runtimeconfig.json
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\bin\Debug\net9.0\ReactionsApp.Data.dll
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\bin\Debug\net9.0\ReactionsApp.Data.pdb
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.AssemblyInfo.cs
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.sourcelink.json
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.dll
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\refint\ReactionsApp.Data.dll
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.pdb
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ReactionsApp.Data.genruntimeconfig.cache
+C:\Users\HP\Desktop\ReactionsApp\ReactionsApp.Data\obj\Debug\net9.0\ref\ReactionsApp.Data.dll

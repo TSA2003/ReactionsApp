@@ -11,6 +11,11 @@ namespace ReactionsApp.Data
 {
     public class ReactionsAppDbContext : DbContext
     {
+        public ReactionsAppDbContext()
+        {
+            
+        }
+
         public ReactionsAppDbContext(DbContextOptions<ReactionsAppDbContext> options)
             : base(options)
         {
@@ -31,6 +36,13 @@ namespace ReactionsApp.Data
                     foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
                 }
             }
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ReactionsAppDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
     }
 }
