@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BCrypt.Net;
 using ReactionsApp.Business.Dtos;
+using ReactionsApp.Business.Dtos.Auth;
 using ReactionsApp.Data.Entities;
 using ReactionsApp.Data.Repositories;
 using System;
@@ -33,7 +34,7 @@ namespace ReactionsApp.Business.Services
         public override async Task<TDto> AddAsync<TDto>(TDto dto)
         {
             var entity = _mapper.Map<User>(dto);
-            entity.PasswordHash = BCrypt.Net.BCrypt.HashPassword((dto as UserDto).Password);
+            entity.PasswordHash = BCrypt.Net.BCrypt.HashPassword((dto as RegisterDto).Password);
             entity = await _repository.AddAsync(entity);
 
             return _mapper.Map<TDto>(entity);
@@ -42,7 +43,7 @@ namespace ReactionsApp.Business.Services
         public override async Task<TDto> UpdateAsync<TDto>(TDto dto)
         {
             var entity = _mapper.Map<User>(dto);
-            entity.PasswordHash = BCrypt.Net.BCrypt.HashPassword((dto as UserDto).Password);
+            entity.PasswordHash = BCrypt.Net.BCrypt.HashPassword((dto as RegisterDto).Password);
             entity = await _repository.UpdateAsync(entity);
 
             return _mapper.Map<TDto>(entity);

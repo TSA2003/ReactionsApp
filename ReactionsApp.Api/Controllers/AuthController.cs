@@ -36,16 +36,12 @@ namespace ReactionsApp.Api.Controllers
             if (userDto is not null)
                 return BadRequest("User exists");
 
-            userDto = await _service.AddAsync<UserDto>(new UserDto() 
-            { 
-                Username = registerDto.Username,
-                Password = registerDto.Password
-            });
+            var newUserDto = await _service.AddAsync(registerDto);
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, userDto.Username),
-                new Claim(ClaimTypes.NameIdentifier, userDto.ToString())
+                new Claim(ClaimTypes.Name, newUserDto.Username),
+                new Claim(ClaimTypes.NameIdentifier, newUserDto.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
@@ -61,7 +57,7 @@ namespace ReactionsApp.Api.Controllers
 
             return Ok(new
             {
-                user = userDto,
+                user = newUserDto,
                 token = new JwtSecurityTokenHandler().WriteToken(token)
             });
         }
@@ -96,7 +92,7 @@ namespace ReactionsApp.Api.Controllers
 
             return Ok(new
             {
-                user = userDto,
+                username = userDto.Username,
                 token = new JwtSecurityTokenHandler().WriteToken(token)
             });
         }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ReactionsApp.Business.Dtos;
+using ReactionsApp.Business.Dtos.Auth;
 using ReactionsApp.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace ReactionsApp.Business
         public AutoMapperProfile()
         {
             CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<User, RegisterDto>().ReverseMap();
             CreateMap<StartingLightsGameResult, StartingLightsGameResultDto>().ReverseMap();
             CreateMap<RandomPointsGameResult, RandomPointsGameResultDto>().ReverseMap();
         }

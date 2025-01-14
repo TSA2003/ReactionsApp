@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "ReactionsApp\\ReactionsApp.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "ReactionsApp.Api\\ReactionsApp.Api.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReactionsApp.Business")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0aea0026be60ba3b39b5734320b59750007d5f1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d72c05518e28fd211cedddc58bc98355f20b20a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReactionsApp.Business")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReactionsApp.Business")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

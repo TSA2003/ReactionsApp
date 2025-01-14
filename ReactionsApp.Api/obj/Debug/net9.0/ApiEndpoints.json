@@ -33,7 +33,17 @@
   },
   {
     "ContainingType": "ReactionsApp.Api.Controllers.StartingLightsGameResultController",
-    "Method": "SaveResult",
+    "Method": "GetAll",
+    "RelativePath": "api/StartingLightsGameResult",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReactionsApp.Api.Controllers.StartingLightsGameResultController",
+    "Method": "Save",
     "RelativePath": "api/StartingLightsGameResult",
     "HttpMethod": "POST",
     "IsController": true,

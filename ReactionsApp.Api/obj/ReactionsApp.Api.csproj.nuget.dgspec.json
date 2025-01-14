@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Api\\ReactionsApp.Api.csproj": {}
+    "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Api\\ReactionsApp.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Api\\ReactionsApp.Api.csproj": {
+    "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Api\\ReactionsApp.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Api\\ReactionsApp.Api.csproj",
+        "projectUniqueName": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Api\\ReactionsApp.Api.csproj",
         "projectName": "ReactionsApp.Api",
-        "projectPath": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Api\\ReactionsApp.Api.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Api\\obj\\",
+        "projectPath": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Api\\ReactionsApp.Api.csproj",
+        "packagesPath": "C:\\Users\\sport\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sport\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,8 +33,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj": {
-                "projectPath": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj"
+              "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj": {
+                "projectPath": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj"
               }
             }
           }
@@ -93,20 +93,20 @@
         }
       }
     },
-    "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj": {
+    "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj",
+        "projectUniqueName": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj",
         "projectName": "ReactionsApp.Data",
-        "projectPath": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Data\\obj\\",
+        "projectPath": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj",
+        "packagesPath": "C:\\Users\\sport\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sport\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -179,20 +179,20 @@
         }
       }
     },
-    "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj": {
+    "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj",
+        "projectUniqueName": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj",
         "projectName": "ReactionsApp.Business",
-        "projectPath": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Service\\obj\\",
+        "projectPath": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Service\\ReactionsApp.Business.csproj",
+        "packagesPath": "C:\\Users\\sport\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sport\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -208,8 +208,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj": {
-                "projectPath": "C:\\Users\\HP\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj"
+              "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj": {
+                "projectPath": "C:\\Users\\sport\\Desktop\\ReactionsApp\\ReactionsApp.Data\\ReactionsApp.Data.csproj"
               }
             }
           }

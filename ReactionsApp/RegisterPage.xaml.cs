@@ -1,3 +1,9 @@
+using System.Net;
+using System.Text.Json;
+using System.Text;
+using ReactionsApp.Models;
+using ReactionsApp.Helpers;
+
 namespace ReactionsApp;
 
 public partial class RegisterPage : ContentPage
@@ -8,7 +14,7 @@ public partial class RegisterPage : ContentPage
 	}
 
     // Handle Register Button Click
-    private void OnRegisterClicked(object sender, EventArgs e)
+    private async void OnRegisterClicked(object sender, EventArgs e)
     {
         string username = usernameEntry.Text;
         string email = emailEntry.Text;
@@ -21,27 +27,62 @@ public partial class RegisterPage : ContentPage
         {
             errorLabel.Text = "Please fill out all fields.";
             errorLabel.IsVisible = true;
+            return;
         }
         else if (password != confirmPassword)
         {
             errorLabel.Text = "Passwords do not match.";
             errorLabel.IsVisible = true;
+            return;
         }
         else if (!IsValidEmail(email))
         {
             errorLabel.Text = "Please enter a valid email address.";
             errorLabel.IsVisible = true;
+            return;
         }
-        else
+
+        
+        var loginData = new { Username = username, Email = email, Password = password };
+
+        using (var client = HttpClientFactory.Create())
         {
-            // Simulate a successful registration
-            errorLabel.IsVisible = false;
+            try
+            {
+                // Serialize the data to JSON
 
-            // You would typically send the data to your API for actual registration
-            DisplayAlert("Success", "Registration successful!", "OK");
+                string json = JsonSerializer.Serialize(loginData);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            // Navigate to Login Page or Home Page
-            Navigation.PushAsync(new LoginPage());
+                // Send a POST request
+                var response = await client.PostAsync("/api/auth/register", content);
+                string responseContent = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseData = JsonSerializer.Deserialize<AuthResponseModel>(responseContent);
+
+                    SessionStorage.Username = responseData.Username;
+                    SessionStorage.Token = responseData.Token;
+
+                    errorLabel.IsVisible = false;
+
+                    await DisplayAlert("Success", "Registration successful!", "OK");
+                    await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                }
+                else
+                {
+                    var responseData = responseContent;
+
+                    errorLabel.Text = responseContent;
+                    errorLabel.IsVisible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                errorLabel.Text = "An error occured. Please try again.";
+                errorLabel.IsVisible = true;
+            }
         }
     }
 
