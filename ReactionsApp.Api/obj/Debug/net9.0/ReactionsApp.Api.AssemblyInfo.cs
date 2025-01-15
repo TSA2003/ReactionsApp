@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReactionsApp.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d72c05518e28fd211cedddc58bc98355f20b20a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5881c2457fe60abff792a5f922eeb2bca9da5f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReactionsApp.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReactionsApp.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

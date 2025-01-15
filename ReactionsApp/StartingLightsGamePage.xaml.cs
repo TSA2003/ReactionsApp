@@ -1,5 +1,8 @@
 using ReactionsApp.Enums;
+using ReactionsApp.Helpers;
 using System.Diagnostics;
+using System.Text;
+using System.Text.Json;
 
 namespace ReactionsApp;
 
@@ -137,7 +140,7 @@ public partial class StartingLightsGamePage : ContentPage
         IsGameRunning = false;
     }
 
-    private void Launch()
+    private async void Launch()
     {
         LightIlluminateTimer.Stop();
         LightsExtinguishTimer.Stop();
@@ -151,6 +154,25 @@ public partial class StartingLightsGamePage : ContentPage
             ReactionStopwatch.Stop();
             var time = ReactionStopwatch.Elapsed;
             GameStatusLabel.Text = $"Reaction time: {time:ss}.{time:fff} seconds";
+
+            try
+            {
+                var gameResultData = new { ReactionTime = time, GameMode = LaunchMode, PlayerId = Preferences.Get("id", "") };
+                string json = JsonSerializer.Serialize(gameResultData);
+                var body = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await HttpClientWrapper.PostAuthorizedAsync("/api/startinglightsgameresult", body, Preferences.Get("token", ""));
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    await DisplayAlert("Error", "Could not save game result!", "OK");
+                }
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Error", "An error occured!", "OK");
+            }
+                        
         }
     }
 }

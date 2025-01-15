@@ -10,6 +10,23 @@
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage"
+        IsVisible="True"
+        />
 
+    <Shell.FlyoutHeader>
+        <StackLayout Padding="20">
+            <Border WidthRequest="100" HeightRequest="100" >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="50, 50, 50, 50" />
+                </Border.StrokeShape>
+                <Image Source="dotnet_bot.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" />
+            </Border>
+            <Label Text="User" FontSize="24" HorizontalOptions="Center" />
+            <Label Text="user@example.com" HorizontalOptions="Center" />
+            <Button Text="Logout" />
+        </StackLayout>
+    </Shell.FlyoutHeader>
 </Shell>
+
+    

@@ -5,7 +5,8 @@
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
-    <ScrollView>
+
+        <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">

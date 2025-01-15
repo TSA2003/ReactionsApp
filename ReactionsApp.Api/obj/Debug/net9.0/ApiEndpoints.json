@@ -32,6 +32,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ReactionsApp.Api.Controllers.AuthController",
+    "Method": "Verify",
+    "RelativePath": "api/Auth/verify",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ReactionsApp.Api.Controllers.StartingLightsGameResultController",
     "Method": "GetAll",
     "RelativePath": "api/StartingLightsGameResult",
@@ -51,7 +61,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ReactionsApp.Business.Dtos.RandomPointsGameResultDto",
+        "Type": "ReactionsApp.Business.Dtos.StartingLightsGameResultDto",
         "IsRequired": true
       }
     ],

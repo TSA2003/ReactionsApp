@@ -11,8 +11,13 @@ namespace ReactionsApp.Business.Dtos
 {
     public class StartingLightsGameResultDto : BaseDto
     {
+        [Required]
         public TimeSpan ReactionTime { get; set; }
+
+        [Required]
         public StartingLightsGameMode GameMode { get; set; }
+
+        [Required]
         public Guid PlayerId { get; set; }
     }
 }

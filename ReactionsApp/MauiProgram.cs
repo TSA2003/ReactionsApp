@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using ReactionsApp.Helpers;
 
 namespace ReactionsApp
 {
@@ -18,9 +19,6 @@ namespace ReactionsApp
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
-
-
 
             return builder.Build();
         }

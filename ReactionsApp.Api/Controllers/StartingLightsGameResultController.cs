@@ -13,9 +13,9 @@ namespace ReactionsApp.Api.Controllers
     [Authorize]
     public class StartingLightsGameResultController : ControllerBase
     {
-        private readonly RandomPointsGameResultService _service;
+        private readonly StartingLightsGameResultService _service;
 
-        public StartingLightsGameResultController(RandomPointsGameResultService service)
+        public StartingLightsGameResultController(StartingLightsGameResultService service)
         {
             _service = service;
         }
@@ -27,7 +27,7 @@ namespace ReactionsApp.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save([FromBody] RandomPointsGameResultDto dto)
+        public async Task<IActionResult> Save([FromBody] StartingLightsGameResultDto dto)
         {
             if (!ModelState.IsValid)
             {

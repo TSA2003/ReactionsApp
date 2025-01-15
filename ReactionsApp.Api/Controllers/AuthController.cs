@@ -12,8 +12,7 @@ using System.Text;
 namespace ReactionsApp.Api.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [AllowAnonymous]
+    [ApiController]    
     public class AuthController : ControllerBase
     {
         private readonly UserService _service;
@@ -25,7 +24,15 @@ namespace ReactionsApp.Api.Controllers
             _configuration = configuration;
         }
 
+        [HttpGet("verify")]
+        [Authorize]
+        public IActionResult Verify()
+        {
+            return Ok("Valid Token");
+        }
+
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
             if (!ModelState.IsValid)
@@ -38,31 +45,28 @@ namespace ReactionsApp.Api.Controllers
 
             var newUserDto = await _service.AddAsync(registerDto);
 
-            var claims = new[]
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:SecretKey"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                new Claim(ClaimTypes.Name, newUserDto.Username),
-                new Claim(ClaimTypes.NameIdentifier, newUserDto.ToString())
+                Subject = new ClaimsIdentity(new[] { new Claim("id", userDto.Id.ToString()) }),
+                Expires = DateTime.UtcNow.AddMinutes(30),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"]
             };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(30),  // Token expiration
-                signingCredentials: creds
-            );
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            tokenHandler.WriteToken(token);
 
             return Ok(new
             {
                 user = newUserDto,
-                token = new JwtSecurityTokenHandler().WriteToken(token)
+                token = token
             });
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
             if (!ModelState.IsValid)
@@ -73,27 +77,23 @@ namespace ReactionsApp.Api.Controllers
             if (userDto is null)
                 return Unauthorized("Invalid username or password");
 
-            var claims = new[]
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:SecretKey"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                new Claim(ClaimTypes.Name, userDto.Username),
-                new Claim(ClaimTypes.NameIdentifier, userDto.Id.ToString())
+                Subject = new ClaimsIdentity(new[] { new Claim("id", userDto.Id.ToString()) }),
+                Expires = DateTime.UtcNow.AddMinutes(30),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"]
             };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(30),  // Token expiration
-                signingCredentials: creds
-            );
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            
 
             return Ok(new
             {
-                username = userDto.Username,
-                token = new JwtSecurityTokenHandler().WriteToken(token)
+                user = userDto,
+                token = tokenHandler.WriteToken(token)
             });
         }
     }

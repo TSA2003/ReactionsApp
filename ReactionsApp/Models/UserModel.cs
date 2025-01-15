@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ReactionsApp.Models
 {
-    public class AuthResponseModel
+    public class UserModel
     {
-        public UserModel User { get; set; }
-        public string Token { get; set; }
+        public Guid Id { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
     }
 }

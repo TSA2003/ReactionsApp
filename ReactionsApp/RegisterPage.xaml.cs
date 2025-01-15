@@ -45,46 +45,46 @@ public partial class RegisterPage : ContentPage
         
         var loginData = new { Username = username, Email = email, Password = password };
 
-        using (var client = HttpClientFactory.Create())
+        try
         {
-            try
+            // Serialize the data to JSON
+
+            string json = JsonSerializer.Serialize(loginData);
+            var body = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Send a POST request
+            var response = await HttpClientWrapper.PostAsync("/api/auth/register", body);
+            string responseContent = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
             {
-                // Serialize the data to JSON
+                var responseData = JsonSerializer.Deserialize<AuthResponseModel>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-                string json = JsonSerializer.Serialize(loginData);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                Preferences.Set("id", responseData.User.Id.ToString());
+                Preferences.Set("username", responseData.User.Username);
+                Preferences.Set("email", responseData.User.Email);
+                Preferences.Set("token", responseData.Token);
 
-                // Send a POST request
-                var response = await client.PostAsync("/api/auth/register", content);
-                string responseContent = await response.Content.ReadAsStringAsync();
+                errorLabel.IsVisible = false;
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseData = JsonSerializer.Deserialize<AuthResponseModel>(responseContent);
-
-                    SessionStorage.Username = responseData.Username;
-                    SessionStorage.Token = responseData.Token;
-
-                    errorLabel.IsVisible = false;
-
-                    await DisplayAlert("Success", "Registration successful!", "OK");
-                    await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-                }
-                else
-                {
-                    var responseData = responseContent;
-
-                    errorLabel.Text = responseContent;
-                    errorLabel.IsVisible = true;
-                }
+                await DisplayAlert("Success", "Registration successful!", "OK");
+                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
             }
-            catch (Exception ex)
+            else
             {
-                errorLabel.Text = "An error occured. Please try again.";
+                var responseData = responseContent;
+
+                errorLabel.Text = responseContent;
                 errorLabel.IsVisible = true;
             }
         }
+        catch (Exception ex)
+        {
+            errorLabel.Text = "An error occured. Please try again.";
+            errorLabel.IsVisible = true;
+        }
     }
+    
 
     // Validate Email Format (simple example)
     private bool IsValidEmail(string email)
