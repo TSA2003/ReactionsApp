@@ -13,5 +13,10 @@ namespace ReactionsApp.Data.Repositories
         public StartingLightsGameResultRepository(ReactionsAppDbContext context) : base(context)
         {
         }
+
+        public override async Task<IEnumerable<StartingLightsGameResult>> GetAllAsync()
+        {
+            return _dbSet.Include(p => p.Player);
+        }
     }
 }

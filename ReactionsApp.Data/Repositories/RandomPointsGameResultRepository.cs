@@ -13,5 +13,10 @@ namespace ReactionsApp.Data.Repositories
         public RandomPointsGameResultRepository(ReactionsAppDbContext context) : base(context)
         {
         }
+
+        public override async Task<IEnumerable<RandomPointsGameResult>> GetAllAsync()
+        {
+            return _dbSet.Include(p => p.Player);
+        }
     }
 }

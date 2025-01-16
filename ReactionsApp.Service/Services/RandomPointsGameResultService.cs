@@ -16,5 +16,18 @@ namespace ReactionsApp.Business.Services
         public RandomPointsGameResultService(RandomPointsGameResultRepository repository, IMapper mapper) : base(repository, mapper)
         {
         }
+
+        public override async Task<IEnumerable<TDto>> GetAllAsync<TDto>()
+        {
+            var entities = await _repository.GetAllAsync();
+            return entities.Select(e =>
+            {
+                var dto = _mapper.Map<TDto>(e);
+                (dto as RandomPointsGameResultDto).Username = e.Player.Username;
+                (dto as RandomPointsGameResultDto).ResultTime = e.CreatedAt;
+
+                return dto;
+            }).OrderByDescending(d => (d as RandomPointsGameResultDto).Score);
+        }
     }
 }

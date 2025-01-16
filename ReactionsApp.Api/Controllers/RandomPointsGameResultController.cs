@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReactionsApp.Business.Dtos;
 using ReactionsApp.Business.Services;
@@ -7,6 +8,7 @@ namespace ReactionsApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RandomPointsGameResultController : ControllerBase
     {
         private readonly RandomPointsGameResultService _service;
@@ -18,7 +20,7 @@ namespace ReactionsApp.Api.Controllers
 
         public async Task<IActionResult> GetAll()
         {
-            var results = _service.GetAllAsync<RandomPointsGameResultDto>();
+            var results = await _service.GetAllAsync<RandomPointsGameResultDto>();
             return Ok(results);
         }
 

@@ -22,7 +22,7 @@ namespace ReactionsApp.Api.Controllers
 
         public async Task<IActionResult> GetAll()
         {
-            var results = _service.GetAllAsync<StartingLightsGameResultDto>();
+            var results = await _service.GetAllAsync<StartingLightsGameResultDto>();
             return Ok(results);
         }
 

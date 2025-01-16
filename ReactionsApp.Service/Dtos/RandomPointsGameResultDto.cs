@@ -12,5 +12,9 @@ namespace ReactionsApp.Business.Dtos
     {
         public int Score { get; set; }
         public Guid PlayerId { get; set; }
+
+        public string? Username { get; set; }
+
+        public DateTime? ResultTime { get; set; }
     }
 }

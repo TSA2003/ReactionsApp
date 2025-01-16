@@ -9,6 +9,13 @@ namespace ReactionsApp
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            usernameLabel.Text = Preferences.Get("username", "");
+            emailLabel.Text = Preferences.Get("email", "");
+        }
+
         private void RegisterRoutes()
         {
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));

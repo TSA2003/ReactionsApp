@@ -19,5 +19,9 @@ namespace ReactionsApp.Business.Dtos
 
         [Required]
         public Guid PlayerId { get; set; }
+
+        public string? Username { get; set; }
+
+        public DateTime? ResultTime { get; set; }
     }
 }

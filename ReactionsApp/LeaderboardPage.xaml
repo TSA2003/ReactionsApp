@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReactionsApp.LeaderboardPage"
+             Title="LeaderboardPage">
+    <VerticalStackLayout>
+        <Label Text="Select Game"
+                   FontSize="18"
+                   VerticalOptions="CenterAndExpand" />
+
+        <Picker x:Name="gamePicker" 
+                    SelectedIndexChanged="OnGameSelected"
+                    Title="Select Game">
+        </Picker>
+        <ScrollView>
+            <Grid x:Name="table" Padding="10">
+                <!-- Grid will be populated dynamically in the code-behind -->
+            </Grid>
+        </ScrollView>
+    </VerticalStackLayout>
+    
+    
+</ContentPage>
