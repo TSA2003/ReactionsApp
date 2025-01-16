@@ -1,10 +1,13 @@
 using Microsoft.Maui.Layouts;
+using System.Text.Json;
+using System.Text;
+using ReactionsApp.Helpers;
 
 namespace ReactionsApp;
 
 public partial class RandomPointsGamePage : ContentPage
 {
-	private const int GAME_DURATION_IN_SECONDS = 60;
+	private const int GAME_DURATION_IN_SECONDS = 10;
     private const int INITIAL_SCORE = 0;
     private const int TICK_SECONDS = 1;
     private readonly Color FILL_COLOR = Color.FromRgb(0, 0, 255);
@@ -23,7 +26,13 @@ public partial class RandomPointsGamePage : ContentPage
 		StartGame();
 	}
 
-	private void StartGame()
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        GameTimer.Stop();
+    }
+
+    private void StartGame()
 	{
         Score = INITIAL_SCORE;
         RemainingSeconds = GAME_DURATION_IN_SECONDS;
@@ -31,11 +40,13 @@ public partial class RandomPointsGamePage : ContentPage
         RemainingSecondsLabel.Text = $"Time left: {RemainingSeconds.ToString()}";
         GameTimer = Dispatcher.CreateTimer();
 		GameTimer.Interval = TimeSpan.FromSeconds(TICK_SECONDS);
-		GameTimer.Tick += (s, e) =>
+		GameTimer.Tick += async (s, e) =>
 		{
             if (RemainingSeconds == 0)
             {
-                GameField.IsEnabled = false;
+                GameTimer.Stop();
+                await SaveResult(Score);
+                GameField.RemoveAt(GameField.Count - 1);
                 return;
             }
             RemainingSeconds--;
@@ -93,7 +104,27 @@ public partial class RandomPointsGamePage : ContentPage
 	public void OnResetGameButtonClicked(object sender, EventArgs e)
 	{
         GameTimer.Stop();
-        GameField.RemoveAt(GameField.Count - 1);
         StartGame();
+    }
+
+    private async Task SaveResult(int result)
+    {
+        try
+        {
+            var gameResultData = new { Score = result, PlayerId = Preferences.Get("id", "") };
+            string json = JsonSerializer.Serialize(gameResultData);
+            var body = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await HttpClientWrapper.PostAuthorizedAsync("/api/randompointsgameresult", body, Preferences.Get("token", ""));
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                await DisplayAlert("Error", "Could not save game result!", "OK");
+            }
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Error", "An error occured!", "OK");
+        }
     }
 }

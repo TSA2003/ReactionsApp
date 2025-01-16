@@ -11,7 +11,8 @@ public partial class LoginPage : ContentPage
 	public LoginPage()
 	{
 		InitializeComponent();
-	}
+        Shell.Current.FlyoutBehavior = FlyoutBehavior.Disabled;
+    }
 
     // Handle Login Button Click
     private async void OnLoginClicked(object sender, EventArgs e)
@@ -50,7 +51,6 @@ public partial class LoginPage : ContentPage
 
                 errorLabel.IsVisible = false;
 
-                await DisplayAlert("Success", "Registration successful!", "OK");
                 await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
             }
             else

@@ -13,8 +13,8 @@ namespace ReactionsApp.Business.Services.Interfaces
     {
         Task<TDto> GetByIdAsync<TDto>(Guid id);
         Task<IEnumerable<TDto>> GetAllAsync<TDto>();
-        Task<TDto> AddAsync<TDto>(TDto dto);
-        Task<TDto> UpdateAsync<TDto>(TDto dto);
+        Task<TOutDto> AddAsync<TInDto, TOutDto>(TInDto inDto);
+        Task<TOutDto> UpdateAsync<TInDto, TOutDto>(TInDto inDto);
         Task DeleteAsync(Guid id);
     }
 }

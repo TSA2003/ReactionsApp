@@ -34,8 +34,7 @@ namespace ReactionsApp.Api.Controllers
                 return BadRequest("Wrong DTO format");
             }
 
-            dto.PlayerId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            await _service.AddAsync(dto);
+            await _service.AddAsync<StartingLightsGameResultDto, StartingLightsGameResultDto>(dto);
 
             return Ok("Game Result Saved");
         }

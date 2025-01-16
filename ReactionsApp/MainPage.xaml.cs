@@ -5,12 +5,10 @@ namespace ReactionsApp
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
             InitializeComponent();
-            //Shell.Current.FlyoutBehavior = FlyoutBehavior.Disabled;
         }
 
         private void OnStartingLightsGameButtonClicked(object sender, EventArgs e)
@@ -26,10 +24,11 @@ namespace ReactionsApp
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            Shell.Current.FlyoutBehavior = FlyoutBehavior.Flyout;
             var isSessionValid = await IsSessionValid();
             if (!isSessionValid)
             {
-                Navigation.PushAsync(new LoginPage());
+                await Navigation.PushAsync(new LoginPage());
             }
         }
 

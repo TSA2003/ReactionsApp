@@ -155,24 +155,28 @@ public partial class StartingLightsGamePage : ContentPage
             var time = ReactionStopwatch.Elapsed;
             GameStatusLabel.Text = $"Reaction time: {time:ss}.{time:fff} seconds";
 
-            try
-            {
-                var gameResultData = new { ReactionTime = time, GameMode = LaunchMode, PlayerId = Preferences.Get("id", "") };
-                string json = JsonSerializer.Serialize(gameResultData);
-                var body = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await HttpClientWrapper.PostAuthorizedAsync("/api/startinglightsgameresult", body, Preferences.Get("token", ""));
+            await SaveResult(time);      
+        }
+    }
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    await DisplayAlert("Error", "Could not save game result!", "OK");
-                }
-            }
-            catch (Exception)
+    private async Task SaveResult(TimeSpan result)
+    {
+        try
+        {
+            var gameResultData = new { ReactionTime = result, GameMode = LaunchMode, PlayerId = Preferences.Get("id", "") };
+            string json = JsonSerializer.Serialize(gameResultData);
+            var body = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await HttpClientWrapper.PostAuthorizedAsync("/api/startinglightsgameresult", body, Preferences.Get("token", ""));
+
+            if (!response.IsSuccessStatusCode)
             {
-                await DisplayAlert("Error", "An error occured!", "OK");
+                var content = await response.Content.ReadAsStringAsync();
+                await DisplayAlert("Error", "Could not save game result!", "OK");
             }
-                        
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Error", "An error occured!", "OK");
         }
     }
 }

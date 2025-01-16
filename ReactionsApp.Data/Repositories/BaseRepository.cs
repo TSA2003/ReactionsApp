@@ -42,10 +42,7 @@ namespace ReactionsApp.Data.Repositories
         public virtual async Task<T> AddAsync(T entity)
         {
             if (entity == null) 
-                throw new ArgumentNullException(nameof(entity));
-            
-            entity.CreatedAt = DateTime.Now;
-            entity.UpdatedAt = DateTime.Now;
+                throw new ArgumentNullException(nameof(entity));                        
 
             await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
@@ -56,9 +53,7 @@ namespace ReactionsApp.Data.Repositories
         public virtual async Task<T> UpdateAsync(T entity)
         {
             if (entity == null) 
-                throw new ArgumentNullException(nameof(entity));
-
-            entity.UpdatedAt = DateTime.Now;
+                throw new ArgumentNullException(nameof(entity));            
 
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();

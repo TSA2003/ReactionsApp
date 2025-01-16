@@ -36,20 +36,25 @@ namespace ReactionsApp.Business.Services
             return _mapper.Map<IEnumerable<TDto>>(entities);
         }
 
-        public virtual async Task<TDto> AddAsync<TDto>(TDto dto)
+        public virtual async Task<TOutDto> AddAsync<TInDto, TOutDto>(TInDto inDto)
         {
-            var entity = _mapper.Map<TEntity>(dto);
+            var entity = _mapper.Map<TEntity>(inDto);
+            entity.CreatedAt = DateTime.Now;
+            entity.UpdatedAt = DateTime.Now;
+
             entity = await _repository.AddAsync(entity);
 
-            return _mapper.Map<TDto>(entity);
+            return _mapper.Map<TOutDto>(entity);
         }
 
-        public virtual async Task<TDto> UpdateAsync<TDto>(TDto dto)
+        public virtual async Task<TOutDto> UpdateAsync<TInDto, TOutDto>(TInDto inDto)
         {
-            var entity = _mapper.Map<TEntity>(dto);
+            var entity = _mapper.Map<TEntity>(inDto);
+            entity.UpdatedAt = DateTime.Now;
+
             entity = await _repository.UpdateAsync(entity);
 
-            return _mapper.Map<TDto>(entity);
+            return _mapper.Map<TOutDto>(entity);
         }
 
         public virtual async Task DeleteAsync(Guid id)

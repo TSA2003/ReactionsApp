@@ -43,25 +43,24 @@ namespace ReactionsApp.Api.Controllers
             if (userDto is not null)
                 return BadRequest("User exists");
 
-            var newUserDto = await _service.AddAsync(registerDto);
+            var newUserDto = await _service.AddAsync<RegisterDto, UserDto>(registerDto);
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:SecretKey"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", userDto.Id.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("id", newUserDto.Id.ToString()) }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"]
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            tokenHandler.WriteToken(token);
-
+            
             return Ok(new
             {
                 user = newUserDto,
-                token = token
+                token = tokenHandler.WriteToken(token)
             });
         }
 

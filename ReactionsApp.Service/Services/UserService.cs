@@ -31,22 +31,22 @@ namespace ReactionsApp.Business.Services
             return _mapper.Map<UserDto>(entity);
         }
 
-        public override async Task<TDto> AddAsync<TDto>(TDto dto)
+        public override async Task<TOutDto> AddAsync<TInDto, TOutDto>(TInDto inDto)
         {
-            var entity = _mapper.Map<User>(dto);
-            entity.PasswordHash = BCrypt.Net.BCrypt.HashPassword((dto as RegisterDto).Password);
+            var entity = _mapper.Map<User>(inDto);
+            entity.PasswordHash = BCrypt.Net.BCrypt.HashPassword((inDto as RegisterDto).Password);
             entity = await _repository.AddAsync(entity);
 
-            return _mapper.Map<TDto>(entity);
+            return _mapper.Map<TOutDto>(entity);
         }
 
-        public override async Task<TDto> UpdateAsync<TDto>(TDto dto)
+        public override async Task<TOutDto> UpdateAsync<TInDto, TOutDto>(TInDto inDto)
         {
-            var entity = _mapper.Map<User>(dto);
-            entity.PasswordHash = BCrypt.Net.BCrypt.HashPassword((dto as RegisterDto).Password);
+            var entity = _mapper.Map<User>(inDto);
+            entity.PasswordHash = BCrypt.Net.BCrypt.HashPassword((inDto as RegisterDto).Password);
             entity = await _repository.UpdateAsync(entity);
 
-            return _mapper.Map<TDto>(entity);
+            return _mapper.Map<TOutDto>(entity);
         }
     }
 }

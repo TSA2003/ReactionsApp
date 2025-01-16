@@ -33,7 +33,7 @@ namespace ReactionsApp.Data
             {
                 foreach (var foreignKey in entityType.GetForeignKeys())
                 {
-                    foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+                    foreignKey.DeleteBehavior = DeleteBehavior.ClientCascade;
                 }
             }
         }

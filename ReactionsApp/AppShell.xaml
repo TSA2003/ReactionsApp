@@ -24,7 +24,7 @@
             </Border>
             <Label Text="User" FontSize="24" HorizontalOptions="Center" />
             <Label Text="user@example.com" HorizontalOptions="Center" />
-            <Button Text="Logout" />
+            <Button Text="Logout" Clicked="OnButtonClicked" />
         </StackLayout>
     </Shell.FlyoutHeader>
 </Shell>

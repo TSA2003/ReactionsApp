@@ -15,5 +15,14 @@ namespace ReactionsApp
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         }
+
+        private void OnButtonClicked(object sender, EventArgs e)
+        {
+            Preferences.Set("id", "");
+            Preferences.Set("username", "");
+            Preferences.Set("email", "");
+            Preferences.Set("token", "");
+            Navigation.PushAsync(new LoginPage());
+        }
     }
 }

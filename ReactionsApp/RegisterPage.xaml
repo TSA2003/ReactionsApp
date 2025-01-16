@@ -6,6 +6,7 @@
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
+
     <VerticalStackLayout Padding="50" MaximumWidthRequest="500">
         <!-- Title -->
         <Label Text="Register"

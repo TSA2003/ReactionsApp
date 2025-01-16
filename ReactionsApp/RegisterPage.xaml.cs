@@ -11,7 +11,8 @@ public partial class RegisterPage : ContentPage
 	public RegisterPage()
 	{
 		InitializeComponent();
-	}
+        Shell.Current.FlyoutBehavior = FlyoutBehavior.Disabled;
+    }
 
     // Handle Register Button Click
     private async void OnRegisterClicked(object sender, EventArgs e)
@@ -67,7 +68,6 @@ public partial class RegisterPage : ContentPage
 
                 errorLabel.IsVisible = false;
 
-                await DisplayAlert("Success", "Registration successful!", "OK");
                 await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
             }
             else
