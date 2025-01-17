@@ -104,6 +104,7 @@ public partial class RandomPointsGamePage : ContentPage
 	public void OnResetGameButtonClicked(object sender, EventArgs e)
 	{
         GameTimer.Stop();
+        GameField.RemoveAt(GameField.Count - 1);
         StartGame();
     }
 

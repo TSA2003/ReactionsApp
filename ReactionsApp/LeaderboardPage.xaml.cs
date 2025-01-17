@@ -14,10 +14,15 @@ public partial class LeaderboardPage : ContentPage
         gamePicker.Items.Add("Random Points");
 	}
 
-    protected override void OnAppearing()
+    protected async override void OnAppearing()
     {
         base.OnAppearing();
         gamePicker.SelectedIndex = 0;
+        var isSessionValid = await IsSessionValid();
+        if (!isSessionValid)
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
     }
 
     private void GenerateTable<T>(List<T> items)
@@ -98,5 +103,34 @@ public partial class LeaderboardPage : ContentPage
 
         // Re-generate the table with filtered data
         //GenerateTable(filteredData);
+    }
+
+    private async Task<bool> IsSessionValid()
+    {
+        try
+        {
+            string token = Preferences.Get("token", "");
+
+            if (token == "")
+                return false;
+
+            // Serialize the data to JSON
+
+
+            // Send a POST request
+            var response = await HttpClientWrapper.GetAuthorizedAsync("/api/auth/verify", token);
+            string responseContent = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

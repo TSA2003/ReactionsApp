@@ -4,6 +4,7 @@ namespace ReactionsApp
 {
     public partial class AppShell : Shell
     {
+
         public AppShell()
         {
             InitializeComponent();
@@ -14,6 +15,7 @@ namespace ReactionsApp
             base.OnAppearing();
             usernameLabel.Text = Preferences.Get("username", "");
             emailLabel.Text = Preferences.Get("email", "");
+
         }
 
         private void RegisterRoutes()
@@ -23,13 +25,21 @@ namespace ReactionsApp
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         }
 
-        private void OnButtonClicked(object sender, EventArgs e)
+        private async void OnLogoutButtonClicked(object sender, EventArgs e)
         {
             Preferences.Set("id", "");
             Preferences.Set("username", "");
             Preferences.Set("email", "");
             Preferences.Set("token", "");
-            Navigation.PushAsync(new LoginPage());
+
+
+            Application.Current.MainPage = new LoginPage();
+        }
+
+        public void SetUserDataLabels(string username, string email)
+        {
+            usernameLabel.Text = username;
+            emailLabel.Text = email;
         }
     }
 }

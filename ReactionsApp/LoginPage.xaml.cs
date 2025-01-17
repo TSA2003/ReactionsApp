@@ -49,9 +49,13 @@ public partial class LoginPage : ContentPage
                 Preferences.Set("email", responseData.User.Email);
                 Preferences.Set("token", responseData.Token);
 
+                Application.Current.MainPage = new AppShell();
+
+                (Shell.Current as AppShell).SetUserDataLabels(responseData.User.Username, responseData.User.Email);
+
                 errorLabel.IsVisible = false;
 
-                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                await Shell.Current.GoToAsync($"//{ nameof(MainPage) }?clear=true");
             }
             else
             {

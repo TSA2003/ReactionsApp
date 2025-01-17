@@ -31,7 +31,7 @@
             </Border>
             <Label x:Name="usernameLabel" FontSize="24" HorizontalOptions="Center" />
             <Label x:Name="emailLabel" HorizontalOptions="Center" />
-            <Button Text="Logout" Clicked="OnButtonClicked" />
+            <Button Text="Logout" Clicked="OnLogoutButtonClicked" />
         </StackLayout>
     </Shell.FlyoutHeader>
 </Shell>
